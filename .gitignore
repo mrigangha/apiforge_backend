@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Alembic
+alembic/versions/*.pyc
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Logs
+*.log
+logs/
+
+
+
+# Distribution
+*.zip
+*.tar.gz
