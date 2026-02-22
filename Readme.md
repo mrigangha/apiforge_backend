@@ -1,6 +1,6 @@
 # APIFORGE Backend
 
-A Backend with AUTH,JWT authentication,RBAC and CRUD .
+A Backend with AUTH,JWT authentication,RBAC and CRUD for assignment.
 
 ## TechStack
 # 1. FastAPI
