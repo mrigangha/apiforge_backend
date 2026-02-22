@@ -3,9 +3,9 @@
 A Backend with AUTH,JWT authentication,RBAC and CRUD for assignment.
 
 ## TechStack
-# 1. FastAPI
-# 2. PostgresSQL 
-# 3. Docker for deployment
+### 1. FastAPI
+### 2. PostgresSQL 
+### 3. Docker for deployment
 
 ---
 
