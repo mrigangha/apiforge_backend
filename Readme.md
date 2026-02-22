@@ -1,6 +1,11 @@
 # APIFORGE Backend
 
-FastAPI backend with PostgreSQL, JWT authentication, and Docker.
+A Backend with AUTH,JWT authentication,RBAC and CRUD .
+
+## TechStack
+# 1. FastAPI
+# 2. PostgresSQL 
+# 3. Docker for deployment
 
 ---
 
@@ -23,7 +28,7 @@ cd apiforge_backend
 
 Create a `.env` file in the `backend/` directory:
 
-database and all are hardcoded for now for test purposes
+Database and all are hardcoded for now for test purposes
 
 ```env
 SECRET=your_secret_key_here
