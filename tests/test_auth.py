@@ -4,6 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from src.main import app
+from src.services import admin_services
 
 client = TestClient(app)
 
@@ -177,5 +178,48 @@ def test_refresh_expired_token():
 
     assert res.status_code == 401
     assert "expired" in res.json()["detail"].lower()
+
+    app.dependency_overrides.clear()
+
+
+# ─── POST /auth/logout ───────────────────────────────────
+
+from src.services import auth_service  # make sure this is imported
+
+
+def test_logout_success():
+    app.dependency_overrides[auth_service.getCurrentUser] = lambda: "alice@example.com"
+
+    client.cookies.set("refresh_token", "valid_refresh_token")
+    res = client.post("/api/v1/auth/logout")
+
+    assert res.status_code == 200
+    assert res.json()["message"] == "Logged out successfully"
+
+    app.dependency_overrides.clear()
+
+
+def test_logout_unauthenticated():
+    from fastapi import HTTPException
+
+    def raise_401():
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    app.dependency_overrides[auth_service.getCurrentUser] = raise_401
+
+    res = client.post("/api/v1/auth/logout")
+    assert res.status_code == 401
+
+    app.dependency_overrides.clear()
+
+
+def test_logout_clears_cookie():
+    app.dependency_overrides[auth_service.getCurrentUser] = lambda: "alice@example.com"
+
+    client.cookies.set("refresh_token", "some_refresh_token")
+    res = client.post("/api/v1/auth/logout")
+
+    set_cookie_header = res.headers.get("set-cookie", "")
+    assert "refresh_token" in set_cookie_header
 
     app.dependency_overrides.clear()

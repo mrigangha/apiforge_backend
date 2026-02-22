@@ -3,6 +3,11 @@ uvicorn
 python-dotenv
 pytest
 argon2-cffi
-pytest
 pytest-asyncio
 httpx
+sqlalchemy
+psycopg2-binary
+python-jose
+passlib[bcrypt]
+alembic
+PyJWT

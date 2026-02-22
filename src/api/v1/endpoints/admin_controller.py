@@ -33,3 +33,13 @@ async def delete_user(
 ):
     admin_services.delete_user(user_id, db)
     return {"message": "User deleted successfully"}
+
+
+@router.get("/users/{user_id}")
+async def get_user(
+    user_id: int,
+    email: str = Depends(admin_services.getCurrentAdmin),
+    db: Session = Depends(get_db),
+):
+    user = admin_services.get_user_by_id(user_id, db)
+    return {"message": "User found", "user": user}

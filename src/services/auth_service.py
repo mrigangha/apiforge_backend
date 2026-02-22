@@ -5,7 +5,7 @@ from typing import Annotated
 import jwt
 from argon2 import PasswordHasher
 from fastapi import Cookie, Depends, HTTPException, status
-from fastapi.security import HTTPBearer
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from src.models import User
@@ -71,7 +71,10 @@ def verify_password(hashed_password, password):
         )
 
 
-def getCurrentUser(token: Annotated[str, Depends(bearer)]):
+def getCurrentUser(
+    credentials: Annotated[HTTPAuthorizationCredentials, Depends(bearer)],
+):
+    token = credentials.credentials
     try:
         email = decode_jwt(token)
         return email
@@ -109,4 +112,11 @@ def verify_user(email: str, password: str, db: Session):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     verify_password(user.password, password)
+    return user
+
+
+def get_user_by_email(email: str, db: Session):
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
     return user

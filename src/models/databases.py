@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/assignment_db"
+DATABASE_URL = "postgresql://postgres:postgres@db:5432/assignment_db"
 
 engine = create_engine(DATABASE_URL)
 
