@@ -15,20 +15,18 @@ FastAPI backend with PostgreSQL, JWT authentication, and Docker.
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd assignment/backend
+git clone https://github.com/mrigangha/apiforge_backend.git/
+cd apiforge_backend
 ```
 
 ### 2. Create a `.env` file
 
 Create a `.env` file in the `backend/` directory:
 
+database and all are hardcoded for now for test purposes
+
 ```env
-DATABASE_URL=postgresql://postgres:password@db:5432/apiforge
-SECRET_KEY=your_secret_key_here
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-REFRESH_TOKEN_EXPIRE_DAYS=7
+SECRET=your_secret_key_here
 ```
 
 ### 3. Start the containers
