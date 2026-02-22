@@ -1,7 +1,9 @@
 import datetime
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
+import dotenv
 import jwt
 from argon2 import PasswordHasher
 from fastapi import Cookie, Depends, HTTPException, status
@@ -11,7 +13,9 @@ from sqlalchemy.orm import Session
 from src.models import User
 from src.schemas import auth_schemas
 
-SECRET = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
+dotenv.load_dotenv()
+
+SECRET = os.getenv("SECRET")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 REFRESH_TOKEN_EXPIRE_DAYS = 7
