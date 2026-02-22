@@ -102,6 +102,21 @@ Once running, interactive API docs are available at:
 
 ---
 
+
+### Tests for the endpoint using pytest
+
+To run the tests
+```bash
+docker build -t test .
+
+docker run test pytest
+\q
+```
+
+Contains three test file for auth admin and posts endpoints
+
+---
+
 ## Promote a User to Admin
 
 To manually promote a user to admin via the database:
