@@ -8,6 +8,11 @@ A Backend with AUTH,JWT authentication,RBAC and CRUD for assignment.
 ### 3. Docker for deployment
 
 ---
+### Auth
+
+It is based on a http only refresh token and a runtime only accestoken
+
+whenever page refresh it creats a new acces token using api/v1/auth/refresh endpoint.
 
 ## Prerequisites
 
