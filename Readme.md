@@ -103,7 +103,7 @@ Once running, interactive API docs are available at:
 ---
 
 
-### Tests for the endpoint using pytest
+### Tests using pytest
 
 To run the tests
 ```bash
